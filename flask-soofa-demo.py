@@ -42,5 +42,19 @@ def payment():
         return redirect(url_for('success', response="wrong request method"))
 
 
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    try:
+        data = request.get_json()
+        transaction = Transaction(**data)
+    except TypeError:
+        return "invalid data"
+    print(transaction.get_time())
+    print(transaction.tid)
+    print(transaction.receiver_currency, transaction.gross_amount)
+    print(transaction.json())
+    return "success"
+
+
 if __name__ == '__main__':
     app.run(debug=True)
