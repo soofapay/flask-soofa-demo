@@ -1,0 +1,84 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <title>soofapay demo</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand pl-lg-5" href="#">Flask Soofapay Demo</a>
+</nav>
+<div class="container">
+<div class="row " style="width:100%">
+    {% if response %}
+    <div class="bg-info text-center" style="width:100%;font-size: 2em; color:#ffffff">{{ response }}</div>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-sm-4 offset-2">
+        <img src="{{url_for('static', filename='nokia.jpg')}}" class="img-responsive" style="max-width: 100%" />
+    </div>
+    <div class="col-sm-4">
+        <div class="mt-5">
+            <h4> Nokia 5.1 Plus - 5.8" HD, 32GB + 3GB (Dual SIM) - Blue</h4>
+        </div>
+        <div class="mt-5">
+            <ul class="list-group">
+                <li class="list-group-item active">Key Features</li>
+                <li class="list-group-item">RAM 3GB</li>
+                <li class="list-group-item">Internal storage 32GB</li>
+                <li class="list-group-item">Expandable storage Yes</li>
+                <li class="list-group-item">Expandable storage type microSD</li>
+                <form class="soofa" action="/payment/"  method="post"><input type="hidden" name="csrfmiddlewaretoken" value="H7H3ERtgR2peDFq2w5hedM5odQn5tBEc0otiY4PHs9ZtU96tWDv0ezmmawnTc9ko">
+                     <input type="text" name="amount" value="102" hidden />
+                     <input type="text" name="reference" value="my reference" hidden />
+                     <input type="text" name="tid" value="" hidden />
+                     <input id="ww" type="button" class="btn btn-block btn-primary qbn-submit" value="Poceed to pay" />
+                </form>
+                <br>
+                <form class="soofa" action="http://127.0.0.1:5000/payment/"  method="post"><input type="hidden" name="csrfmiddlewaretoken" value="H7H3ERtgR2peDFq2w5hedM5odQn5tBEc0otiY4PHs9ZtU96tWDv0ezmmawnTc9ko">
+                     <input type="text" name="amount" value="500" hidden />
+                     <input type="text" name="reference" value="my reference" hidden />
+                     <input type="text" name="tid" value="" hidden />
+                     <input id="ww" type="button" class="btn btn-block btn-dark qbn-submit" value="Or Pay ksh 500" />
+                </form>
+                <br>
+                <form class="soofa" action="http://127.0.0.1:5000/payment/"  method="post"><input type="hidden" name="csrfmiddlewaretoken" value="H7H3ERtgR2peDFq2w5hedM5odQn5tBEc0otiY4PHs9ZtU96tWDv0ezmmawnTc9ko">
+                     <input type="text" name="amount" value="102" hidden />
+                     <input type="text" name="reference" value="my reference" hidden />
+                     <input type="text" name="tid" value="" hidden />
+                     <input id="ww" type="button" class="btn btn-block btn-outline-dark qbn-submit" value="Demonstate with $1" />
+                </form>
+                <br>
+                <form class="soofa" action="http://127.0.0.1:5000/payment"  method="post"><input type="hidden" name="csrfmiddlewaretoken" value="H7H3ERtgR2peDFq2w5hedM5odQn5tBEc0otiY4PHs9ZtU96tWDv0ezmmawnTc9ko">
+                     <input type="text" name="amount" value="1" hidden />
+                     <input type="text" name="reference" value="my reference" hidden />
+                     <input type="text" name="tid" value="" hidden />
+                     <input id="ww" type="button" class="btn btn-block btn-success qbn-submit" value="Try with Ksh 1" />
+                </form>
+                <br>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="https://django-soofa-demo-static.s3.amazonaws.com/static/popper.min.js?AWSAccessKeyId=AKIA4AVM4UCZXDBDWXYN&amp;Signature=C0N5MA60BMutWXD1xJKnPKP46AM%3D&amp;Expires=1565471989"></script>
+<script type="text/javascript" src="https://django-soofa-demo-static.s3.amazonaws.com/static/jquery-3.3.1.slim.min.js?AWSAccessKeyId=AKIA4AVM4UCZXDBDWXYN&amp;Signature=AX%2Ft8oBYHOCTGtUxUtkGz7HZFKg%3D&amp;Expires=1565471989"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script
+     id="qbn"
+     src="https://checkout.soofapay.com/v1/soofa.min.js"
+     type="text/javascript"
+     data-till="5002">
+</script>
+</html>
