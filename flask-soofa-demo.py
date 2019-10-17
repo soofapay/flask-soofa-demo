@@ -1,10 +1,10 @@
 from decimal import Decimal
 
 from flask import Flask, request, render_template, redirect, url_for
-from python_soofa import Soofa, Transaction
+from soofa import Soofa, Transaction
 
-TILL_NUMBER = "5002"
-SECRET_KEY = "3ixwt45uq88wttqgixpyla8d27ob0w"
+TILL_NUMBER = "5005"
+SECRET_KEY = "1zjmqsomeaxx8j8nqrn3t9oc1ee4ig"
 app = Flask(__name__)
 
 
@@ -24,7 +24,7 @@ def payment():
         tid = request.form["tid"]
         reference = request.form["reference"]
         amount = request.form["amount"]
-        print("transaction id: "+ tid + "Transaction reference: " + reference + "Amount transacted:  " + amount)
+        print("transaction id: "+ tid + " Transaction reference: " + reference + " Amount transacted: " + amount)
         soofa = Soofa(TILL_NUMBER, SECRET_KEY)
         if soofa.find(tid):
             transaction: Transaction = soofa.get_transaction()
